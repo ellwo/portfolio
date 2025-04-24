@@ -31,8 +31,8 @@ const TechGraph = ({ badges }: TechGraphProps) => {
 
   const isMobile = typeof window !== "undefined" ? window.innerWidth < 768 : false;
   const isTablet = typeof window !== "undefined" ? window.innerWidth < 1024 : false;
-  const minSize = isMobile ? 60 : 30;  // base size
-  const maxSize = isMobile ? 50 : 70;  // max size
+  const minSize = isMobile ? 20 : 30;  // base size
+  const maxSize = isMobile ? 30 : 60;  // max size
   const svgRef = useRef<SVGSVGElement>(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 600 });
   const [hoveredNode, setHoveredNode] = useState<Node | null>(null);
@@ -44,14 +44,14 @@ const TechGraph = ({ badges }: TechGraphProps) => {
         if (container) {
           setDimensions({
             width: container.clientWidth,
-            height: Math.max(600, container.clientHeight),
+            height: Math.max(500, container.clientHeight),
           });
         }
       }
     };
 
     updateDimensions();
-    window.addEventListener('resize', updateDimensions);
+    // window.addEventListener('resize', updateDimensions);
     return () => window.removeEventListener('resize', updateDimensions);
   }, []);
 
@@ -262,7 +262,7 @@ nodes.forEach(n => {
     return () => {
       simulation.stop();
     };
-  }, [badges, dimensions]);
+  }, [badges, dimensions, isMobile, isTablet, minSize, maxSize]);
 
   return (
     <div className="relative w-full h-[600px]">
