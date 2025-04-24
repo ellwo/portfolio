@@ -1,0 +1,228 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html, body {
+    @apply overflow-hidden;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    @apply bg-space-dark text-white;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+
+  #root {
+    @apply h-full w-full p-0 max-w-none m-0;
+  }
+}
+
+/* Responsive and layout improvements */
+@layer components {
+  .section-container {
+    @apply h-screen w-full flex items-center justify-center p-3 sm:p-4 md:p-6;
+    min-height: 100vh;
+  }
+
+  .star {
+    @apply absolute bg-white rounded-full;
+    box-shadow: 0 0 2px white;
+  }
+
+  .badge {
+    @apply flex items-center justify-center rounded-full bg-primary-light border border-accent/30 hover:border-accent;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .badge:hover {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    transform: scale(1.1);
+  }
+
+  .timeline-dot {
+    @apply w-4 h-4 rounded-full bg-accent absolute left-0 top-2 -translate-x-1/2;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  }
+  
+  .timeline-line {
+    @apply absolute left-0 top-0 w-[2px] h-full bg-gradient-to-b from-accent/80 to-accent/20;
+  }
+  
+  .project-card {
+    @apply bg-primary border border-primary-light rounded-lg overflow-hidden transition-all;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .project-card:hover {
+    @apply border-accent/50;
+    box-shadow: 0 8px 30px rgba(255, 215, 0, 0.15);
+    transform: translateY(-5px);
+  }
+  
+  .gold-glow {
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+  }
+  
+  .avatar-container {
+    @apply relative rounded-full overflow-hidden;
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.2);
+  }
+
+  /* Responsive container/padding adjustments */
+  @media (max-width: 900px) {
+    .section-container {
+      @apply p-2;
+      min-height: 100vh;
+    }
+    .avatar-container img {
+      @apply w-20 h-20;
+    }
+    .badge {
+      min-width: 26px !important;
+      min-height: 26px !important;
+      font-size: 18px !important;
+      padding: 7px !important;
+    }
+  }
+  @media (max-width: 700px) {
+    .section-container {
+      @apply flex-col p-1;
+      min-height: 100vh;
+      justify-content: flex-start;
+    }
+    .avatar-container img {
+      @apply w-16 h-16;
+    }
+    .badge {
+      min-width: 20px !important;
+      min-height: 20px !important;
+      font-size: 14px !important;
+      padding: 5px !important;
+    }
+  }
+  /* Badges: smaller on desktop, bigger/stack on mobile */
+  @media (min-width: 1200px) {
+    .badge {
+      min-width: 20px !important;
+      min-height: 20px !important;
+      font-size: 14px !important;
+      padding: 7px !important;
+    }
+  }
+  /* Avatar badges wrap stacking and margin */
+  .avatar-container {
+    margin-bottom: 1rem;
+  }
+}
+
+@layer utilities {
+  /* No major changes to existing utilities */
+}
+
+/* Shooting star animation */
+@keyframes shoot {
+  0% {
+    transform: translateX(0) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(300px) translateY(200px);
+    opacity: 0;
+  }
+}
+
+/* Stars background animation */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.8; }
+}
+
+.star {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+/* Typing effect animations */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { opacity: 0 }
+}
+
+/* Badge float animation */
+@keyframes badge-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-5px) rotate(2deg); }
+  75% { transform: translateY(5px) rotate(-2deg); }
+}
+
+.animate-badge-float {
+  animation: badge-float 5s ease-in-out infinite;
+}
+
+/* Cursor blink animation */
+.animate-cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Avatar float animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Section transition animations */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(100px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 500ms, transform 500ms;
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateY(-100px);
+  transition: opacity 500ms, transform 500ms;
+}
