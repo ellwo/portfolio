@@ -78,7 +78,8 @@ const TypingEffect = ({ titles }: { titles: string[] }) => {
     } else if (isDeleting) {
       if (displayText === '') {
         if (currentIndex === titles.length - 1) {
-          setShowFullTitles(true);
+          setCurrentIndex(-1);
+          // setShowFullTitles(true);
         } else {
           setCurrentIndex((prev) => (prev + 1) % titles.length);
           setIsDeleting(false);
@@ -96,7 +97,7 @@ const TypingEffect = ({ titles }: { titles: string[] }) => {
 
   if (showFullTitles) {
     return (
-      <div className="text-lg text-gray-300 flex flex-wrap gap-x-2 gap-y-1 max-w-[270px]">
+      <div className="text-lg text-accent flex flex-wrap gap-x-2 gap-y-1 max-w-[270px]">
         {titles.map((title, index) => (
           <span key={index}>
             {title}
@@ -109,7 +110,7 @@ const TypingEffect = ({ titles }: { titles: string[] }) => {
 
   return (
     <div className="relative inline-block w-full overflow-hidden whitespace-nowrap h-7">
-      <div className="inline-block">
+      <div className="inline-block text-accent">
         {displayText}
         <span className="inline-block w-1 h-5 bg-accent animate-cursor-blink ml-1"></span>
       </div>
@@ -141,7 +142,7 @@ const Header = () => {
             />
           </div>
           <div className="flex-1 min-w-0 w-full">
-            <h1 className="text-4xl font-bold text-gradient mb-2">{profile.name}</h1>
+            <h1 className="md:text-4xl text-2xl font-bold text-gradient mb-2">{profile.name}</h1>
             <div className="h-7 overflow-hidden">
               <TypingEffect titles={profile.titles} />
             </div>
