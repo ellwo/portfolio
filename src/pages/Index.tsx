@@ -10,7 +10,7 @@ const Index = () => {
         <section className="min-h-screen flex items-center justify-center">
           <Header />
         </section>
-        <section className="min-h-screen flex items-center justify-center bg-space-light">
+        <section className="min-h-screen flex items-center justify-center ">
           <Timeline />
         </section>
         {/* <section className="min-h-screen flex items-center justify-center">

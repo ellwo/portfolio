@@ -7,13 +7,14 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm ci
+RUN npm install -g pnpm@9.14.2
 
 # Copy source code
 COPY . .
 
 # Build the application
-RUN npm run build
+RUN pnpm install
+RUN pnpm build
 
 # Production stage
 FROM nginx:alpine

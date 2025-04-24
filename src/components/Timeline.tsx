@@ -42,7 +42,7 @@ const Timeline = () => {
   }, [language]);
 
   return (
-    <section className="section-container bg-space-light">
+    <section className="bg-space p-10">
       <div className="max-w-4xl w-full mx-auto overflow-hidden px-4">
         <h2 className="text-3xl font-bold text-gradient text-center mb-12">
           {language === 'en' ? 'Professional Journey' : 'المسيرة المهنية'}
