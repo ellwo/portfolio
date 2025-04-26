@@ -14,42 +14,7 @@ interface BadgeProps {
   priority_percent: number;
 }
 
-// Dynamic badge sizing for better desktop/mobile scaling
-const Badge = ({ badge }: { badge: BadgeProps }) => {
-  // Use useIsMobile for better reliablity
-  const isMobile = typeof window !== "undefined" ? window.innerWidth < 768 : false;
-  const minSize = isMobile ? 60 : 30;  // base size
-  const maxSize = isMobile ? 50 : 80;  // max size
-  const percent = (badge.priority_percent ?? 0.6);
-  const size = Math.round(minSize + (maxSize - minSize) * percent);
-  console.log("size-------------------")
-  console.log(size)
-  console.log("size-------------------")
   
-  return (
-    <a 
-      href={badge.link}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="badge animate-badge-float transition-transform hover:scale-110 flex items-center justify-center"
-      style={{ 
-        animationDelay: `${Math.random() * 2}s`,
-        width: `${size}px`,
-        height: `${size}px`,
-        padding: `${Math.max(6, size / 4)}px`,
-      }}
-      title={badge.tooltip_desc}
-    >
-      <i 
-        className={badge.icon} 
-        style={{ 
-          fontSize: `${size * 0.6}px`,
-          lineHeight: 1
-        }}
-      />
-    </a>
-  );
-};
 
 const TypingEffect = ({ titles }: { titles: string[] }) => {
   const [displayText, setDisplayText] = useState('');
